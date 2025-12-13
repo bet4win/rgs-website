@@ -8,7 +8,7 @@ export default function Footer() {
                     {/* Copyright */}
                     <p className="text-gray-500 text-sm">
                         © 2024{' '}
-                        <Link href="/" className="text-purple-400 hover:text-purple-300 transition-colors">
+                        <Link href="/" className="text-[#0066CC] hover:text-[#0099FF] transition-colors">
                             Bet4.win Gaming
                         </Link>
                         . All rights reserved.

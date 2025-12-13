@@ -45,7 +45,7 @@ export default function Products() {
                 <div className="grid md:grid-cols-3 gap-6">
                     {products.map((product, index) => (
                         <div key={index} className="card group">
-                            <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
+                            <div className="w-14 h-14 rounded-xl bg-[#003380]/10 flex items-center justify-center text-[#0066CC] mb-4 group-hover:bg-[#003380]/20 transition-colors">
                                 {product.icon}
                             </div>
                             <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
@@ -53,7 +53,7 @@ export default function Products() {
                             <ul className="space-y-2">
                                 {product.features.map((feature, i) => (
                                     <li key={i} className="flex items-center gap-2 text-gray-500 text-sm">
-                                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#003380]" />
                                         {feature}
                                     </li>
                                 ))}

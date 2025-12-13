@@ -58,7 +58,7 @@ export default function Contact() {
 
                     <button
                         type="submit"
-                        className="w-full py-4 rounded-lg bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 text-white font-semibold hover:from-purple-500 hover:via-purple-400 hover:to-purple-500 transition-all transform hover:scale-[1.02] shadow-lg shadow-purple-500/25"
+                        className="w-full py-4 rounded-lg bg-gradient-to-r from-[#001F5C] via-[#003380] to-[#001F5C] text-white font-semibold hover:from-[#003380] hover:via-[#0047AB] hover:to-[#003380] transition-all transform hover:scale-[1.02] shadow-lg shadow-[#003380]/25"
                     >
                         Send Message
                     </button>

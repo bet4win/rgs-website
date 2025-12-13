@@ -37,7 +37,7 @@ export default function About() {
                 <div className="grid md:grid-cols-3 gap-6">
                     {features.map((feature, index) => (
                         <div key={index} className="card group">
-                            <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-500/20 transition-colors">
+                            <div className="w-14 h-14 rounded-xl bg-[#003380]/10 flex items-center justify-center text-[#0066CC] mb-4 group-hover:bg-[#003380]/20 transition-colors">
                                 {feature.icon}
                             </div>
                             <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>

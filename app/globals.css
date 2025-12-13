@@ -3,8 +3,8 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --primary: #9333EA;
-  --primary-hover: #7c3aed;
+  --primary: #001F5C;
+  --primary-hover: #003380;
   --card-bg: #1a1a1a;
   --card-border: #2a2a2a;
   --text-muted: #a1a1aa;
@@ -37,7 +37,7 @@ body {
 
 /* Gradient button styles */
 .btn-primary {
-  background: linear-gradient(135deg, #9333EA 0%, #7c3aed 50%, #6d28d9 100%);
+  background: linear-gradient(135deg, #001F5C 0%, #003380 50%, #0047AB 100%);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
@@ -48,9 +48,9 @@ body {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #a855f7 0%, #9333EA 50%, #7c3aed 100%);
+  background: linear-gradient(135deg, #0047AB 0%, #003380 50%, #001F5C 100%);
   transform: translateY(-2px);
-  box-shadow: 0 10px 40px rgba(147, 51, 234, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 31, 92, 0.4);
 }
 
 .btn-secondary {
@@ -79,7 +79,7 @@ body {
 }
 
 .card:hover {
-  border-color: rgba(147, 51, 234, 0.3);
+  border-color: rgba(0, 51, 128, 0.4);
   transform: translateY(-4px);
 }
 
@@ -110,7 +110,7 @@ body {
 .input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 31, 92, 0.2);
 }
 
 .input::placeholder {
@@ -135,7 +135,7 @@ body {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 51, 128, 0.25) 0%, transparent 70%);
   filter: blur(60px);
   z-index: -1;
 }
@@ -151,9 +151,12 @@ body {
 
 /* Animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -164,11 +167,14 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 51, 128, 0.4);
   }
+
   50% {
-    box-shadow: 0 0 40px rgba(147, 51, 234, 0.5);
+    box-shadow: 0 0 40px rgba(0, 71, 171, 0.6);
   }
 }
 

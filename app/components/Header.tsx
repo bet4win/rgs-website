@@ -12,7 +12,7 @@ export default function Header() {
                 <div className="flex items-center justify-between">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#003380] to-[#001F5C] flex items-center justify-center">
                             <span className="text-white font-bold text-lg">B4</span>
                         </div>
                         <span className="text-white font-bold text-xl">Bet4.win</span>

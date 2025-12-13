@@ -4,18 +4,18 @@ export default function Hero() {
     return (
         <section className="min-h-screen pt-24 pb-16 px-6 relative overflow-hidden">
             {/* Background glow */}
-            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full filter blur-[100px]" />
-            <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-purple-800/10 rounded-full filter blur-[80px]" />
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#003380]/20 rounded-full filter blur-[100px]" />
+            <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-[#001F5C]/10 rounded-full filter blur-[80px]" />
 
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left Content */}
                     <div className="relative z-10">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                            We craft thrilling slot games{' '}
-                            <span className="bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
-                                that players love to replay.
-                            </span>
+                            Meet The Next Generation Games{' '}
+                            {/* <span className="bg-gradient-to-r from-[#0066CC] to-[#003380] bg-clip-text text-transparent">
+                                that players love.
+                            </span> */}
                         </h1>
 
                         <p className="text-lg text-gray-400 mb-4">
@@ -23,7 +23,7 @@ export default function Hero() {
                         </p>
 
                         <p className="text-gray-500 mb-8 max-w-lg">
-                            As a full-cycle casino game provider, we combine advanced math models, rich visuals, and scalable RGS integration. Our mission is to deliver high-quality, certification-compliant slot, table, and mini games that captivate players and empower operators worldwide.
+                            We are a casino game provider studio crafting the next generation of games for the online casino industry.
                         </p>
 
                         <div className="flex flex-wrap gap-4 mb-8">
@@ -62,13 +62,13 @@ export default function Hero() {
                         {/* Stats */}
                         <div className="flex gap-12">
                             <div>
-                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0066CC] to-[#003380] bg-clip-text text-transparent">
                                     75+
                                 </div>
                                 <div className="text-gray-400 text-sm mt-1">Live Games</div>
                             </div>
                             <div>
-                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-purple-600 bg-clip-text text-transparent">
+                                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#0066CC] to-[#003380] bg-clip-text text-transparent">
                                     10+
                                 </div>
                                 <div className="text-gray-400 text-sm mt-1">Global Markets</div>
