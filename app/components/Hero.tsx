@@ -12,7 +12,7 @@ export default function Hero() {
                     {/* Left Content */}
                     <div className="relative z-10">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                            Meet The Next Generation Games{' '}
+                            Meet2 The Next Generation Games{' '}
                             {/* <span className="bg-gradient-to-r from-[#0066CC] to-[#003380] bg-clip-text text-transparent">
                                 that players love.
                             </span> */}
