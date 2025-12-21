@@ -3,7 +3,7 @@ import React from "react";
 export default function Services() {
   return (
     <section className="wrapper !bg-[#ffffff]">
-      <div className="container pt-[4.5rem] xl:pt-8 lg:pt-8 md:pt-8">
+      <div className="container xl:pt-8 lg:pt-8 md:pt-8">
         <div className="flex flex-wrap mx-[-15px] !text-center">
           <div className="md:w-10/12 xl:w-8/12 lg:w-8/12 w-full flex-[0_0_auto] !px-[15px] max-w-full xl:!ml-[16.66666667%] lg:!ml-[16.66666667%] md:!ml-[8.33333333%]">
             {/* <h2 className="!text-[0.8rem] !tracking-[0.02rem] uppercase !text-[#aab0bc] !mb-3 !leading-[1.35]">

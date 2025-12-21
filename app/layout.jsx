@@ -80,6 +80,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     const handleSticky = () => {
       const navbar = document.querySelector(".navbar");
+      return false
       if (navbar) {
         if (window.scrollY > 120) {
           navbar.classList.add("fixed");
@@ -156,6 +157,7 @@ export default function RootLayout({ children }) {
   useEffect(() => {
     setTimeout(() => {
       import("bootstrap").then(({ Offcanvas }) => {
+        return;
         const navbar = document.querySelector(".navbar");
         if (!navbar) return;
 

@@ -24,7 +24,7 @@ export default function Hero() {
               WIZARDS OF IMMERSIVE GAMING EXPERIENCES
             </h1>
             <p className="lead !text-[1.1rem] !leading-[1.55] !mb-7">
-              Our team at Bet4.win is crafting the most advanced next-generation RGS platform, supporting multiplayer, provably fair, social, crypto and fiat casino needs in a fast paced markets.
+              Crafting the most advanced next-generation RGS platform, supporting multiplayer, provably fair, social, crypto and fiat casino needs in a fast paced markets.
             </p>
             <span>
               {/* <Link
