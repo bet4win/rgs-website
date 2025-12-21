@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { products } from "@/data/products";
+import { games } from "@/data/games";
+import Link from "next/link";
 export default function Games() {
   return (
     <section className="wrapper !bg-[#ffffff]">
@@ -25,19 +26,21 @@ export default function Games() {
 
         <div className="itemgrid grid-view projects-masonry shop !mb-16">
           <div className="flex flex-wrap mx-[-15px] xl:mx-[-20px] lg:mx-[-20px] md:mx-[-20px] !mt-[-50px] xl:!mt-[-80px] lg:!mt-[-80px] md:!mt-[-80px] isotope">
-            {products.map((product) => (
+            {games.map((game) => (
               <div
-                key={product.id}
+                key={game.id}
                 className="project item group md:w-4/12 lg:w-6/12 xl:w-2/12 w-full flex-[0_0_auto] xl:!px-[20px] lg:!px-[20px] md:!px-[20px] !px-[15px] !mt-[50px] xl:!mt-[80px] lg:!mt-[80px] md:!mt-[80px] max-w-full"
               >
                 <figure className="!rounded-[.4rem] !mb-6">
-                  <Image
-                    srcSet={`${product.image2x} 2x`}
-                    alt={product.title}
-                    src="https://maverixgaming.com/assets/games/goldwagonwins.webp"
-                    width={410}
-                    height={440}
-                  />
+                  <Link href={game.url} target="_blank" rel="noopener noreferrer">
+                    <Image
+                      srcSet={`${game.image2x} 2x`}
+                      alt={game.title}
+                      src={game.image}
+                      width={410}
+                      height={440}
+                    />
+                  </Link>
                 </figure>
 
               </div>
