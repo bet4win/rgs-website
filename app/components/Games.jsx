@@ -26,7 +26,7 @@ export default function Games() {
 
           <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
             {games.map((game) => (
-              <div>
+              <div key={game.id}>
                 <figure className="!rounded-[.4rem]">
                   <Link href={game.url} target="_blank" rel="noopener noreferrer">
                     <Image
