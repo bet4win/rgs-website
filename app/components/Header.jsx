@@ -37,7 +37,6 @@ export default function Header({
                     info@bet4.win
                   </a>
                   <br />
-                  00 (123) 456 78 90 <br />
                   <nav className="nav social social-white !mt-4">
                     {socialLinks.map((elm, i) => (
                       <a
