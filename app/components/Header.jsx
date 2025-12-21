@@ -12,7 +12,7 @@ export default function Header({
         <div className="container xl:!flex-row lg:!flex-row !flex-nowrap items-center">
           <div className="navbar-brand w-full">
             <Link href={`/`}>
-              <span className="text-[#343f52] xl:!text-[2.0rem]">Bet4.win</span>
+              <span className="text-[#343f52] !text-[2.0rem]">Bet4.win</span>
             </Link>
           </div>
           <div className="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
