@@ -25,21 +25,14 @@ export default function Footer() {
         <div className="flex flex-wrap mx-[-15px] !mt-[-30px] xl:!mt-0 lg:!mt-0">
           <div className="md:w-4/12 xl:w-3/12 lg:w-3/12 w-full flex-[0_0_auto] !px-[15px] max-w-full xl:!mt-0 lg:!mt-0 !mt-[30px]">
             <div className="widget !text-[#cacaca]">
-              <Image
-                className="!mb-4"
-                srcSet="/assets/img/logo-light@2x.png 2x"
-                alt="image"
-                src="/assets/img/logo-light.png"
-                width={134}
-                height={26}
-              />
+
               <p className="!mb-4">
-                © {new Date().getFullYear()} Sandbox.
+                © {new Date().getFullYear()} Bet4.win
                 <br className="hidden xl:block lg:block !text-[#cacaca]" />
                 All rights reserved.
               </p>
               <nav className="nav social social-white">
-                {socialLinks.map((elm, i) => (
+                {/* {socialLinks.map((elm, i) => (
                   <a
                     key={i}
                     className="!text-[#cacaca] text-[1rem] transition-all duration-[0.2s] ease-in-out translate-y-0 motion-reduce:transition-none hover:translate-y-[-0.15rem] m-[0_.7rem_0_0]"
@@ -49,7 +42,7 @@ export default function Footer() {
                       className={`uil ${elm.icon} before:content-[${elm.unicode}] !text-white text-[1rem]`}
                     />
                   </a>
-                ))}
+                ))} */}
               </nav>
               {/* /.social */}
             </div>

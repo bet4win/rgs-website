@@ -36,12 +36,6 @@ export default function Services() {
                   <p className="!mb-2">
                     Our battle tested RGS platform offers a robust and scalable foundation for seamless game integration and management.
                   </p>
-                  {/* <a
-                    href="#"
-                    className="more hover !text-[#fab758] focus:!text-[#fab758] hover:!text-[#fab758]"
-                  >
-                    Learn More
-                  </a> */}
                 </div>
                 {/*/.card-body */}
               </div>
@@ -56,12 +50,6 @@ export default function Services() {
                   <p className="!mb-2">
                     Certified provably fair Random Number Generator adds transparency and trust to your iGaming portofolio.
                   </p>
-                  {/* <a
-                    href="#"
-                    className="more hover !text-[#e2626b] focus:!text-[#e2626b] hover:!text-[#e2626b]"
-                  >
-                    Learn More
-                  </a> */}
                 </div>
                 {/*/.card-body */}
               </div>
@@ -76,12 +64,6 @@ export default function Services() {
                   <p className="!mb-2">
                     Our games address the needs of the next generation players with social, multiplayer and crypto features.
                   </p>
-                  {/* <a
-                    href="#"
-                    className="more hover !text-[#45c4a0] focus:!text-[#45c4a0] hover:!text-[#45c4a0]"
-                  >
-                    Learn More
-                  </a> */}
                 </div>
                 {/*/.card-body */}
               </div>
