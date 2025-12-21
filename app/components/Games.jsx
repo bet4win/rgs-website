@@ -24,7 +24,7 @@ export default function Games() {
         </div>
         {/* /.row */}
 
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
             {games.map((game) => (
               <div key={game.id}>
                 <figure className="!rounded-[.4rem]">
