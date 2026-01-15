@@ -26,7 +26,7 @@ export default function Games() {
 
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
             {games.map((game) => (
-              <div key={game.id}>
+              <div key={game.id} className="relative">
                 <figure className="!rounded-[.4rem]">
                   <Link href={game.url} target="_blank" rel="noopener noreferrer">
                     <Image
@@ -37,7 +37,13 @@ export default function Games() {
                     />
                   </Link>
                 </figure>
-
+                {game.status !== "active" && (
+                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+                    <span className="text-white text-lg font-bold uppercase">
+                      Coming <br/> {game.status}
+                    </span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
