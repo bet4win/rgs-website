@@ -38,7 +38,7 @@ export default function Games() {
                   </Link>
                 </figure>
                 {game.status !== "active" && (
-                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
                     <span className="text-white text-lg font-bold uppercase">
                       Coming <br/> {game.status}
                     </span>

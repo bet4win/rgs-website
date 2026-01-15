@@ -16,28 +16,12 @@ export const games = [
     url: "https://storage.googleapis.com/b4w-games/plinko/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
   },
   {
-    id: "3",
-    category: "Originals",
-    title: "Chicken",
-    image: "/assets/img/icons/thumbnails/chicken.png",
-    status: "02/2026",
-    url: "https://storage.googleapis.com/b4w-games/chicken/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
-  },
-  {
     id: "4",
     category: "Originals",
     title: "Dice",
     image: "/assets/img/icons/thumbnails/dice.png",
     status: "active",
     url: "https://storage.googleapis.com/b4w-games/dice/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
-  },
-  {
-    id: "5",
-    category: "Originals",
-    title: "Hilo",
-    image: "/assets/img/icons/thumbnails/hilo.png",
-    status: "02/2026",
-    url: "https://storage.googleapis.com/b4w-games/hilo/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
   },
   {
     id: "6",
@@ -64,19 +48,43 @@ export const games = [
     url: "https://storage.googleapis.com/b4w-games/keno/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
   },
   {
-    id: "9",
-    category: "Originals",
-    title: "Dragon",
-    image: "/assets/img/icons/thumbnails/dragon-tower.png",
-    status: "03/2026",
-    url: "https://storage.googleapis.com/b4w-games/dragon/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
-  },
-  {
     id: "10",
     category: "Originals",
     title: "Limbo",
     image: "/assets/img/icons/thumbnails/limbo.png",
     status: "active",
     url: "https://storage.googleapis.com/b4w-games/limbo/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
+  },
+  {
+    id: "9",
+    category: "Originals",
+    title: "Dragon",
+    image: "/assets/img/icons/thumbnails/dragon-tower.png",
+    status: "01/2026",
+    url: "https://storage.googleapis.com/b4w-games/dragon/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
+  },
+  {
+    id: "5",
+    category: "Originals",
+    title: "Hilo",
+    image: "/assets/img/icons/thumbnails/hilo.png",
+    status: "01/2026",
+    url: "https://storage.googleapis.com/b4w-games/hilo/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
+  },
+  {
+    id: "3",
+    category: "Originals",
+    title: "Chicken",
+    image: "/assets/img/icons/thumbnails/chicken.png",
+    status: "02/2026",
+    url: "https://storage.googleapis.com/b4w-games/chicken/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
+  },
+  {
+    id: "15",
+    category: "Originals",
+    title: "cRASH",
+    image: "/assets/img/icons/thumbnails/crash.png",
+    status: "02/2026",
+    url: "https://storage.googleapis.com/b4w-games/hilo/index.html?operator=5e41c28de3724d1290bbafbf6ee31cee&site=test_site&token=test-token-1"
   },
 ];
