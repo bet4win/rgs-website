@@ -26,7 +26,7 @@ export default function Games() {
 
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
             {games.map((game) => (
-              <div key={game.id} className="relative">
+              <div key={game.id} className="relative group cursor-pointer transition-transform duration-300 hover:scale-105 hover:z-10">
                 <figure className="!rounded-[.4rem]">
                   <Link href={game.url} target="_blank" rel="noopener noreferrer">
                     <Image
@@ -34,16 +34,22 @@ export default function Games() {
                       src={game.image}
                       width={410}
                       height={440}
+                      className="transition-opacity duration-300 group-hover:opacity-90"
                     />
                   </Link>
                 </figure>
                 {game.status !== "active" && (
-                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem] pb-8" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
                     <span className="text-white text-lg font-bold uppercase">
-                      Coming <br/> {game.status}
+                      Coming Soon
                     </span>
                   </div>
                 )}
+                <div className="mt-2 text-center">
+                  <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                    {game.title}
+                  </h4>
+                </div>
               </div>
             ))}
           </div>
