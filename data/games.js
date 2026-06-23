@@ -60,7 +60,7 @@ export const games = [
     category: "Originals",
     title: "Dragon",
     image: "/assets/img/icons/thumbnails2/placeholder.png",
-    status: "01/2026",
+    status: "active",
     url: "https://remote-gaming-dev.systems.bet4.win/api/launch?game=14fdde34d95011f08de90242ac120002&token=DEMO&operator=5e41c28de3724d1290bbafbf6ee31cee&lang=en&site=bet4.win"
   },
   {
