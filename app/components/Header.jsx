@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowRight } from "./Icons";
 
 const NAV = [
-  { label: "Games", href: "#games" },
   { label: "Platform", href: "#platform" },
+  { label: "Games", href: "#games" },
   { label: "Provably Fair", href: "#provably-fair" },
-  { label: "Integration", href: "#integration" },
+  // { label: "Integration", href: "#integration" },
 ];
 
 export default function Header() {

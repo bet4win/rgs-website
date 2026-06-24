@@ -25,7 +25,7 @@ export default function HomePage() {
         <Services />
         <Games />
         <ProvablyFair />
-        <Integration />
+        {/* <Integration /> */}
         <ClosingCta />
       </main>
       <Footer />

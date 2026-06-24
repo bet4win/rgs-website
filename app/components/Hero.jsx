@@ -29,20 +29,27 @@ export default function Hero() {
         </p>
 
         <div className="mt-1 flex flex-wrap items-center gap-3">
-          <a
+          {/* <a
             href="#integration"
             className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-5 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             Explore the API
             <Terminal className="h-4 w-4" />
-          </a>
+          </a> */}
           <a
+            href="#integration"
+            className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-5 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          >
+            View games
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          {/* <a
             href="#games"
             className="machined-surface inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] !text-ink transition-colors hover:bg-panel focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line"
           >
             View games
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </a> */}
         </div>
       </div>
 

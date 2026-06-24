@@ -3,9 +3,9 @@ import { Check, Bolt, ShieldCheck, Braces } from "./Icons";
 
 const stats = [
   { icon: Check, label: "Uptime 99.99%", tone: "text-cyan" },
-  { icon: Bolt, label: "Latency <45ms globally", tone: "text-cyan" },
-  { icon: ShieldCheck, label: "GLI-19 certified RNG", tone: "text-cyan" },
-  { icon: Braces, label: "50M+ hashes generated", tone: "text-cyan" },
+  { icon: Bolt, label: "Blazing fast response times globally", tone: "text-cyan" },
+  { icon: ShieldCheck, label: "Certified RGS and RNG", tone: "text-cyan" },
+  { icon: Braces, label: "Bespoke design and branding", tone: "text-cyan" },
 ];
 
 export default function TrustBar() {
