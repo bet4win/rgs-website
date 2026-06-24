@@ -39,7 +39,7 @@ export default function Hero() {
             <Terminal className="h-4 w-4" />
           </a> */}
           <a
-            href="#integration"
+            href="#games"
             onClick={() => trackEvent("cta_click", { label: "hero_view_games", cta_type: "anchor" })}
             className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-5 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
