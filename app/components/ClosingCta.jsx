@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { trackEvent } from "@/app/lib/analytics";
 
 export default function ClosingCta() {
   return (
@@ -14,12 +16,14 @@ export default function ClosingCta() {
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <a
             href="mailto:info@bet4.win?subject=Demo%20request"
+            onClick={() => trackEvent("cta_click", { label: "book_demo", cta_type: "email" })}
             className="rounded-md bg-brand-strong px-7 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             Book a demo
           </a>
           <a
             href="mailto:info@bet4.win"
+            onClick={() => trackEvent("cta_click", { label: "email_direct", cta_type: "email" })}
             className="px-4 py-3 font-JetBrainsMono text-[13px] !text-muted transition-colors hover:!text-ink focus-visible:outline-none focus-visible:!text-ink"
           >
             info@bet4.win

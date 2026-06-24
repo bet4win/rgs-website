@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { games } from "@/data/games";
 import { ArrowRight, Terminal, Shield } from "./Icons";
+import { trackEvent } from "@/app/lib/analytics";
 
 // The hero visual is a wall of the real game thumbnails — the art carries the
 // colour; the chrome stays quiet. Pick the first six live originals.
@@ -38,6 +40,7 @@ export default function Hero() {
           </a> */}
           <a
             href="#integration"
+            onClick={() => trackEvent("cta_click", { label: "hero_view_games", cta_type: "anchor" })}
             className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-5 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           >
             View games

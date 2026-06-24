@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Script from "next/script";
 import "../public/assets/style.css";
 import "photoswipe/dist/photoswipe.css";
 import iTooltip from "itooltip";
@@ -203,6 +204,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0GHLVCP489"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0GHLVCP489');
+          `}
+        </Script>
         {pathname === "/" ? (
           // Homepage runs the dark studio theme on two typefaces, both from
           // Google's CDN so the fonts are offloaded from our own server and

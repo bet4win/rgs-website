@@ -1,10 +1,12 @@
+"use client";
 import React from "react";
+import { trackEvent } from "@/app/lib/analytics";
 
 const links = [
   { label: "Terms", href: "#" },
   { label: "Privacy", href: "#" },
   { label: "API documentation", href: "#" },
-  { label: "Contact", href: "mailto:info@bet4.win" },
+  { label: "Contact", href: "mailto:info@bet4.win", onClick: () => trackEvent("cta_click", { label: "footer_contact", cta_type: "email" }) },
 ];
 
 export default function Footer() {
@@ -22,6 +24,7 @@ export default function Footer() {
             <a
               key={l.label}
               href={l.href}
+              onClick={l.onClick}
               className="font-JetBrainsMono text-[12px] uppercase tracking-[0.05em] !text-muted transition-colors hover:!text-ink focus-visible:outline-none focus-visible:!text-ink"
             >
               {l.label}

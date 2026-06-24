@@ -4,6 +4,7 @@ import Image from "next/image";
 import { games } from "@/data/games";
 import { ArrowRight, Clock } from "./Icons";
 import GameModal from "./GameModal";
+import { trackEvent } from "@/app/lib/analytics";
 
 const isLive = (game) => game.status === "active";
 
@@ -60,7 +61,10 @@ function GameCard({ game, onLaunch }) {
   return live ? (
     <button
       type="button"
-      onClick={() => onLaunch(game)}
+      onClick={() => {
+        trackEvent("game_launch", { game_id: game.id, game_title: game.title });
+        onLaunch(game);
+      }}
       className="block w-full rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       aria-label={`Play ${game.title} demo`}
     >
@@ -87,6 +91,7 @@ export default function Games() {
         </div>
         <a
           href="#contact"
+          onClick={() => trackEvent("cta_click", { label: "request_deck", cta_type: "anchor" })}
           className="inline-flex items-center gap-1.5 font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] !text-brand transition-colors hover:!text-cyan focus-visible:outline-none focus-visible:!text-cyan"
         >
           Request the full deck
