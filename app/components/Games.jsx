@@ -3,6 +3,37 @@ import React from "react";
 import Image from "next/image";
 import { games } from "@/data/games";
 import Link from "next/link";
+
+function GameCard({ game }) {
+  return (
+    <div className={`relative group cursor-pointer transition-transform duration-300 ${game.status === "active" ? "hover:translate-y-[-5px] hover:z-10" : ""}`}>
+      <figure>
+        <Link href={game.url} target="_blank" rel="noopener noreferrer">
+          <Image
+            alt={game.title}
+            src={game.image}
+            width={512}
+            height={512}
+            className="transition-opacity duration-300 rounded-[0.4rem]"
+          />
+        </Link>
+      </figure>
+      {game.status !== "active" && (
+        <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem] mb-[50px]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+          <span className="text-white text-lg font-bold uppercase text-shadow-lg">
+            Coming Soon
+          </span>
+        </div>
+      )}
+      <div className="mt-2 text-center">
+        <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+          {game.title}
+        </h4>
+      </div>
+    </div>
+  );
+}
+
 export default function Games() {
   return (
     <section className="wrapper !bg-[#ffffff]">
@@ -26,31 +57,7 @@ export default function Games() {
 
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
             {games.map((game) => (
-              <div key={game.id} className={`relative group cursor-pointer transition-transform duration-300 ${game.status === "active" ? "hover:scale-102 hover:z-10" : ""}`}>
-                <figure>
-                  <Link href={game.url} target="_blank" rel="noopener noreferrer">
-                    <Image
-                      alt={game.title}
-                      src={game.image}
-                      width={512}
-                      height={512}
-                      className="transition-opacity duration-300 group-hover:opacity-90 rounded-[0.4rem]"
-                    />
-                  </Link>
-                </figure>
-                {game.status !== "active" && (
-                  <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem] mb-[50px]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-                    <span className="text-white text-lg font-bold uppercase">
-                      Coming Soon
-                    </span>
-                  </div>
-                )}
-                <div className="mt-2 text-center">
-                  <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                    {game.title}
-                  </h4>
-                </div>
-              </div>
+              <GameCard key={game.id} game={game} />
             ))}
           </div>
           {/* /.row */}
