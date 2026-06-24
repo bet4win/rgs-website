@@ -74,7 +74,7 @@ export default function Hero() {
           ))}
         </div>
         {/* Fade the wall into the canvas on the left edge */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-transparent lg:block" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-transparent lg:block [transform:rotate(-4deg)]" />
       </div>
     </section>
   );
