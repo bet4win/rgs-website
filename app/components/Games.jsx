@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { games } from "@/data/games";
 import { ArrowRight, Clock } from "./Icons";
@@ -7,6 +7,8 @@ import GameModal from "./GameModal";
 import { trackEvent } from "@/app/lib/analytics";
 
 const isLive = (game) => game.status === "active";
+
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 function GameCard({ game, onLaunch }) {
   const live = isLive(game);
@@ -77,9 +79,45 @@ function GameCard({ game, onLaunch }) {
 
 export default function Games() {
   const [active, setActive] = useState(null);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const gameParam = params.get("game");
+    if (!gameParam) return;
+
+    const match = games.find(
+      (g) =>
+        isLive(g) &&
+        (g.id === gameParam ||
+          g.title.toLowerCase() === gameParam.toLowerCase())
+    );
+    if (!match) return;
+
+    const utmParams = Object.fromEntries(
+      UTM_KEYS.flatMap((k) => {
+        const v = params.get(k);
+        return v ? [[k, v]] : [];
+      })
+    );
+
+    // Small delay so the scroll animates visibly from the hero
+    const timer = setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActive(match);
+      trackEvent("game_launch", {
+        game_id: match.id,
+        game_title: match.title,
+        source: "deep_link",
+        ...utmParams,
+      });
+    }, 150);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section id="games" className="mx-auto max-w-[1280px] px-5 py-20 md:px-12">
+    <section id="games" ref={sectionRef} className="mx-auto max-w-[1280px] px-5 py-20 md:px-12">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="font-JetBrainsMono text-[12px] uppercase tracking-[0.08em] text-cyan">

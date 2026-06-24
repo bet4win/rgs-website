@@ -4,7 +4,7 @@ import TrustBar from "@/app/components/TrustBar";
 import Services from "@/app/components/Services";
 import Games from "@/app/components/Games";
 import ProvablyFair from "@/app/components/ProvablyFair";
-import Integration from "@/app/components/Integration";
+import Theming from "@/app/components/Theming";
 import ClosingCta from "@/app/components/ClosingCta";
 import Footer from "@/app/components/Footer";
 import React from "react";
@@ -25,7 +25,7 @@ export default function HomePage() {
         <Services />
         <Games />
         <ProvablyFair />
-        {/* <Integration /> */}
+        <Theming />
         <ClosingCta />
       </main>
       <Footer />

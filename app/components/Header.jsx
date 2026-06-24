@@ -6,6 +6,7 @@ const NAV = [
   { label: "Platform", href: "#platform" },
   { label: "Games", href: "#games" },
   { label: "Provably Fair", href: "#provably-fair" },
+  { label: "Theming", href: "#theming" },
   // { label: "Integration", href: "#integration" },
 ];
 
