@@ -203,22 +203,41 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;700"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
+        {pathname === "/" ? (
+          // Homepage runs the dark studio theme on two typefaces, both from
+          // Google's CDN so the fonts are offloaded from our own server and
+          // shared-cached. (The template also self-hosts Space Grotesk; the
+          // Google @font-face below is declared last so it wins the cascade.)
+          <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+            rel="stylesheet"
+          />
+        ) : (
+          <>
+            <link
+              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;700"
+              rel="stylesheet"
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap"
+              rel="stylesheet"
+            />
+          </>
+        )}
       </head>
 
-      <body>
+      <body className={pathname === "/" ? "home-dark" : undefined}>
         <Context>
           {children}
-          <SearchModal />
-          <InfoModal />
-          <ProgressWrap />
+          {/* Template extras pull in the Unicons icon font and a floating
+              scroll widget — not needed on the marketing homepage. */}
+          {pathname !== "/" && (
+            <>
+              <SearchModal />
+              <InfoModal />
+              <ProgressWrap />
+            </>
+          )}
         </Context>
       </body>
     </html>

@@ -1,45 +1,81 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { games } from "@/data/games";
+import { ArrowRight, Terminal, Shield } from "./Icons";
+
+// The hero visual is a wall of the real game thumbnails — the art carries the
+// colour; the chrome stays quiet. Pick the first six live originals.
+const wall = games.filter((g) => g.status === "active").slice(0, 6);
+
 export default function Hero() {
   return (
-    <section className="wrapper bg-gradient-yellow">
-      <div className="container pt-10 xl:pt-[2.5rem] lg:pt-[2.5rem] md:pt-[2.5rem] pb-8 !text-center">
-        <div className="flex flex-wrap mx-[-15px] xl:mx-[-35px] lg:mx-[-20px] !mt-[-50px] items-center">
-          <div className="xl:w-7/12 lg:w-7/12 w-full flex-[0_0_auto] !px-[15px] xl:!px-[35px] lg:!px-[20px] !mt-[50px] max-w-full">
-            <figure className="m-0 p-0">
-              <Image
-                className="w-auto"
-                srcSet="/assets/img/illustrations/i2@2x.png 2x"
-                alt="image"
-                src="https://sandbox.ui-lib.com/img/illustrations/i2.png"
-                width={800}
-                height={538}
-              />
-            </figure>
-          </div>
-          {/* /column */}
-          <div className="md:w-10/12 lg:w-5/12 xl:w-5/12 md:!ml-[8.33333333%] lg:!ml-0 xl:!ml-0 flex-[0_0_auto] !px-[15px] xl:!px-[35px] lg:!px-[20px] !mt-[50px] max-w-full text-center lg:text-left xl:text-left">
-            <h1 className="!text-[#343f52] !text-[calc(1.375rem_+_1.5vw)] font-bold !leading-[1.15] xl:!text-[2.0rem] !mb-5 md:mx-[-1.25rem] lg:mx-0">
-              WIZARDS OF IMMERSIVE GAMING EXPERIENCES
-            </h1>
-            <p className="lead !text-[1.1rem] !leading-[1.55] !mb-7">
-              Crafting the most advanced next-generation RGS platform, supporting multiplayer, provably fair, social, crypto and fiat casino needs in a fast paced markets.
-            </p>
-            <span>
-              {/* <Link
-                href={`/contact`}
-                className="btn btn-yellow !text-white !bg-[#fab758] border-[#fab758] hover:text-white hover:bg-[#fab758] hover:!border-[#fab758] active:text-white active:bg-[#fab758] active:border-[#fab758] disabled:text-white disabled:bg-[#fab758] disabled:border-[#fab758] !text-[.85rem] !rounded-[50rem] !mr-2 hover:translate-y-[-0.15rem] hover:shadow-[0_0.25rem_0.75rem_rgba(30,34,40,0.15)]"
-              >
-                Read More
-              </Link> */}
-            </span>
-          </div>
-          {/* /column */}
+    <section className="relative mx-auto flex max-w-[1280px] flex-col items-center gap-12 px-5 pb-12 pt-28 md:px-12 md:pt-36 lg:flex-row lg:gap-16">
+      {/* Copy */}
+      <div className="relative z-10 flex flex-1 flex-col gap-6">
+        <div className="inline-flex w-fit items-center gap-2 rounded-md border border-line bg-panel-low px-3 py-2 font-JetBrainsMono text-[12px] text-cyan shadow-[0_0_18px_rgba(34,211,238,0.08)]">
+          <Shield className="h-3.5 w-3.5" />
+          <span className="opacity-90">
+            server_seed_hash · client_seed · nonce → SHA-256 → outcome ✓
+          </span>
         </div>
-        {/* /.row */}
+
+        <h1 className="max-w-2xl font-SpaceGrotesk !text-[clamp(2.2rem,1.4rem+3vw,3.25rem)] !font-bold !leading-[1.08] !tracking-[-0.03em] !text-ink">
+          Provably fair originals, built for operators.
+        </h1>
+
+        <p className="max-w-xl font-SpaceGrotesk text-[1.05rem] leading-[1.6] text-muted">
+          A certified RNG, a single integration, and a new original every month —
+          crash, mines, plinko and more, ready to brand as your own.
+        </p>
+
+        <div className="mt-1 flex flex-wrap items-center gap-3">
+          <a
+            href="#integration"
+            className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-5 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          >
+            Explore the API
+            <Terminal className="h-4 w-4" />
+          </a>
+          <a
+            href="#games"
+            className="machined-surface inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] !text-ink transition-colors hover:bg-panel focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-line"
+          >
+            View games
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
-      {/* /.container */}
+
+      {/* Game wall */}
+      <div className="relative w-full flex-1">
+        <div
+          className="pointer-events-none absolute -inset-10 -z-10 rounded-full opacity-70 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle at 30% 30%, rgba(59,130,246,0.25), transparent 55%), radial-gradient(circle at 70% 70%, rgba(129,140,248,0.22), transparent 55%)",
+          }}
+        />
+        <div className="grid grid-cols-3 gap-3 [transform:rotate(-4deg)]">
+          {wall.map((game, i) => (
+            <div
+              key={game.id}
+              className={`overflow-hidden rounded-xl border border-line shadow-2xl ${
+                i % 2 === 0 ? "translate-y-3" : ""
+              }`}
+            >
+              <Image
+                src={game.image}
+                alt={game.title}
+                width={256}
+                height={256}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        {/* Fade the wall into the canvas on the left edge */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-transparent to-transparent lg:block" />
+      </div>
     </section>
   );
 }

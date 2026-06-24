@@ -1,38 +1,34 @@
-import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 import Hero from "@/app/components/Hero";
+import TrustBar from "@/app/components/TrustBar";
 import Services from "@/app/components/Services";
 import Games from "@/app/components/Games";
+import ProvablyFair from "@/app/components/ProvablyFair";
+import Integration from "@/app/components/Integration";
+import ClosingCta from "@/app/components/ClosingCta";
+import Footer from "@/app/components/Footer";
 import React from "react";
 
 export const metadata = {
-  title:
-    "Bet4.win - Next-Generation Games",
+  title: "Bet4.win — Provably fair originals, built for operators",
   description:
-    "Sandbox - Modern & Multipurpose React Next.js Template with Tailwind CSS",
+    "A certified RNG, a single integration, and a new provably-fair original every month. The remote gaming server and originals catalogue for modern iGaming operators.",
 };
-export default function DemoPage1() {
+
+export default function HomePage() {
   return (
-    <>
-      <div className="color-navy font-thicccboi">
-        <div className="font-THICCCBOI text-[0.85rem]">
-          <div className="grow shrink-0">
-            <Header />
-            <>
-              {/* /header */}
-              <Hero />
-
-              {/* /section */}
-              <Services />
-
-              <Games />
-            </>
-            <Footer />
-          </div>
-        </div>
-      </div>
-
-
-    </>
+    <div className="min-h-screen bg-bg font-SpaceGrotesk text-ink antialiased">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <TrustBar />
+        <Services />
+        <Games />
+        <ProvablyFair />
+        <Integration />
+        <ClosingCta />
+      </main>
+      <Footer />
+    </div>
   );
 }

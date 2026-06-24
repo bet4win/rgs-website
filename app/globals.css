@@ -15,6 +15,21 @@
   --color-*: initial;
   --color-white: #ffffff;
   --color-black: #000000;
+  /* Dark studio redesign palette (homepage) */
+  --color-bg: #0b1120;
+  --color-panel: #111c30;
+  --color-panel-low: #0a1222;
+  --color-panel-high: #18233a;
+  --color-line: #243049;
+  --color-ink: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-faint: #64748b;
+  --color-brand: #3b82f6;
+  --color-brand-strong: #2563eb;
+  --color-brand-ink: #001833;
+  --color-cyan: #22d3ee;
+  --color-violet: #818cf8;
+  --font-JetBrainsMono: "JetBrains Mono", "SFMono-Regular", "Menlo", "monospace";
   /* responsive Breakpoint */
   --breakpoint-*: initial;
   --breakpoint-xxl: 1400px;
@@ -26,6 +41,48 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+}
+/* Game modal: aspect ratio driven by --game-ratio CSS variable set inline */
+@media (min-width: 768px) {
+  .game-modal-container {
+    width: min(92vw, calc((90vh - 2.75rem) * var(--game-ratio, 16/9)));
+  }
+  .game-iframe-wrapper {
+    aspect-ratio: var(--game-ratio, 16/9);
+  }
+}
+
+/* --- Dark studio redesign helpers (homepage) --- */
+.machined-surface {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+/* Homepage runs the dark studio theme. The template paints body #fefefe and
+   constrains it via height:100% + flex, so the white shows through below the
+   fold. Paint the canvas dark for the home route only — other pages stay light. */
+body.home-dark {
+  background-color: #0b1120;
+  font-family: "Space Grotesk", sans-serif;
+}
+@keyframes b4w-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.b4w-pulse {
+  animation: b4w-pulse 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .b4w-pulse {
+    animation: none;
+  }
 }
 :root {
   @apply text-[20px];

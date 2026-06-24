@@ -1,72 +1,106 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { games } from "@/data/games";
-import Link from "next/link";
+import { ArrowRight, Clock } from "./Icons";
+import GameModal from "./GameModal";
 
-function GameCard({ game }) {
-  return (
-    <div className={`relative group cursor-pointer transition-transform duration-300 ${game.status === "active" ? "hover:translate-y-[-5px] hover:z-10" : ""}`}>
-      <figure>
-        <Link href={game.url} target="_blank" rel="noopener noreferrer">
-          <Image
-            alt={game.title}
-            src={game.image}
-            width={512}
-            height={512}
-            className="transition-opacity duration-300 rounded-[0.4rem]"
-          />
-        </Link>
-      </figure>
-      {game.status !== "active" && (
-        <div className="absolute inset-0 bg-black flex items-center justify-center rounded-[.4rem] mb-[50px]" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-          <span className="text-white text-lg font-bold uppercase text-shadow-lg">
-            Coming Soon
-          </span>
-        </div>
-      )}
-      <div className="mt-2 text-center">
-        <h4 className="text-sm font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+const isLive = (game) => game.status === "active";
+
+function GameCard({ game, onLaunch }) {
+  const live = isLive(game);
+
+  const tile = (
+    <div
+      className={`group relative overflow-hidden rounded-xl border border-line bg-panel transition-transform duration-300 ${
+        live ? "hover:-translate-y-1 hover:ring-1 hover:ring-cyan/50" : ""
+      }`}
+    >
+      <div className="relative aspect-square">
+        <Image
+          src={game.image}
+          alt={game.title}
+          fill
+          sizes="(min-width:992px) 16vw, (min-width:768px) 25vw, 33vw"
+          className={`object-cover !rounded-b-[0] transition-transform duration-300 ${
+            live ? "group-hover:scale-[1.04]" : "grayscale"
+          }`}
+        />
+        <span
+          className={`absolute right-2 top-2 inline-flex items-center gap-1 rounded border px-1.5 py-0.5 font-JetBrainsMono text-[10px] uppercase tracking-[0.05em] backdrop-blur ${
+            live
+              ? "border-line bg-bg/70 text-cyan"
+              : "border-line bg-bg/70 text-muted"
+          }`}
+        >
+          {live ? (
+            <>
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan b4w-pulse" />
+              Live
+            </>
+          ) : (
+            <>
+              <Clock className="h-3 w-3" />
+              {game.status}
+            </>
+          )}
+        </span>
+      </div>
+      <div className="flex items-center justify-between px-3 py-2">
+        <span className="font-SpaceGrotesk text-[0.95rem] font-semibold !text-ink">
           {game.title}
-        </h4>
+        </span>
+        <span className="font-JetBrainsMono text-[10px] uppercase tracking-[0.05em] text-muted">
+          {live ? "Play" : "Soon"}
+        </span>
       </div>
     </div>
+  );
+
+  return live ? (
+    <button
+      type="button"
+      onClick={() => onLaunch(game)}
+      className="block w-full rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      aria-label={`Play ${game.title} demo`}
+    >
+      {tile}
+    </button>
+  ) : (
+    tile
   );
 }
 
 export default function Games() {
+  const [active, setActive] = useState(null);
+
   return (
-    <section className="wrapper !bg-[#ffffff]">
-      <div className="container py-[4.5rem] xl:!py-12 lg:!py-12 md:!py-24">
-
-        <div className="flex flex-wrap mx-[-15px] !text-center">
-          <div className="md:w-10/12 xl:w-8/12 lg:w-8/12 w-full flex-[0_0_auto] !px-[15px] max-w-full xl:!ml-[16.66666667%] lg:!ml-[16.66666667%] md:!ml-[8.33333333%]">
-            {/* <h2 className="!text-[0.8rem] !tracking-[0.02rem] uppercase !text-[#aab0bc] !mb-3 !leading-[1.35]">
-              What We Do?
-            </h2> */}
-            <h3 className="!text-[calc(1.315rem_+_0.78vw)] font-bold xl:!text-[1.4rem] !leading-[1.25] ">
-              NEW GAME EVERY MONTH
-            </h3>
-            <p>
-              Each game is highly customizable to fit your brand and target audience.
-            </p>
-          </div>
-          {/* /column */}
+    <section id="games" className="mx-auto max-w-[1280px] px-5 py-20 md:px-12">
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p className="font-JetBrainsMono text-[12px] uppercase tracking-[0.08em] text-cyan">
+            A new original every month
+          </p>
+          <h2 className="mt-2 font-SpaceGrotesk !text-[1.6rem] !font-bold !tracking-[-0.02em] !text-ink">
+            The catalogue
+          </h2>
         </div>
-        {/* /.row */}
-
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-            {games.map((game) => (
-              <GameCard key={game.id} game={game} />
-            ))}
-          </div>
-          {/* /.row */}
-        
-        {/* /.grid */}
-
-        {/* /nav */}
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-1.5 font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] !text-brand transition-colors hover:!text-cyan focus-visible:outline-none focus-visible:!text-cyan"
+        >
+          Request the full deck
+          <ArrowRight className="h-4 w-4" />
+        </a>
       </div>
-      {/* /.container */}
+
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
+        {games.map((game) => (
+          <GameCard key={game.id} game={game} onLaunch={setActive} />
+        ))}
+      </div>
+
+      <GameModal game={active} onClose={() => setActive(null)} />
     </section>
   );
 }
