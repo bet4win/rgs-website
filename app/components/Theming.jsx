@@ -51,7 +51,7 @@ export default function Theming() {
   const [brand, setBrand] = useState(brands[0]);
 
   return (
-    <section id="theming" className="relative overflow-hidden py-20">
+    <section id="branding" className="relative overflow-hidden py-20">
       <span id="integration" className="absolute -top-1" aria-hidden="true" />
 
       <div
