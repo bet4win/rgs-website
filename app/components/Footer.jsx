@@ -3,10 +3,10 @@ import React from "react";
 import { trackEvent } from "@/app/lib/analytics";
 
 const links = [
-  { label: "Terms", href: "#" },
-  { label: "Privacy", href: "#" },
-  { label: "API documentation", href: "#" },
-  { label: "Contact", href: "mailto:info@bet4.win", onClick: () => trackEvent("cta_click", { label: "footer_contact", cta_type: "email" }) },
+  // { label: "Terms", href: "#" },
+  // { label: "Privacy", href: "#" },
+  // { label: "API documentation", href: "#" },
+  // { label: "Contact", href: "mailto:info@bet4.win", onClick: () => trackEvent("cta_click", { label: "footer_contact", cta_type: "email" }) },
 ];
 
 export default function Footer() {
