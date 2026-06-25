@@ -2,12 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
 
+// Absolute "/#section" so the nav works from any route (e.g. the 404 page),
+// not just the homepage — on "/" it's still a same-page scroll.
 const NAV = [
-  { label: "Platform", href: "#platform" },
-  { label: "Games", href: "#games" },
-  { label: "Provably Fair", href: "#provably-fair" },
-  { label: "Branding", href: "#branding" },
-  // { label: "Integration", href: "#integration" },
+  { label: "Platform", href: "/#platform" },
+  { label: "Games", href: "/#games" },
+  { label: "Provably Fair", href: "/#provably-fair" },
+  { label: "Branding", href: "/#branding" },
+  // { label: "Integration", href: "/#integration" },
 ];
 
 export default function Header() {
@@ -39,7 +41,7 @@ export default function Header() {
         </nav>
 
         <a
-          href="#contact"
+          href="/#contact"
           className="inline-flex items-center gap-1.5 rounded-md bg-brand-strong px-4 py-2 font-JetBrainsMono text-[12px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_18px_rgba(37,99,235,0.3)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           Book a demo

@@ -6,7 +6,7 @@
 // Console will treat the variants as separate properties and split ranking
 // signals. Overridable per-environment for preview deploys.
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://bet4.win"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.bet4.win"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Bet4.win";

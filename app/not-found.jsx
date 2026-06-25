@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
+import { ArrowRight } from "@/app/components/Icons";
 import React from "react";
 
 export const metadata = {
@@ -10,23 +13,36 @@ export const metadata = {
 
 export default function NotFoundPage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-bg px-5 text-center text-ink">
-      <p className="mb-4 font-JetBrainsMono text-[13px] uppercase tracking-[0.08em] text-cyan">
-        Error 404
-      </p>
-      <h1 className="mb-3 font-SpaceGrotesk !text-[clamp(2rem,1.4rem+2vw,2.75rem)] !font-bold !tracking-[-0.03em]">
-        Page not found.
-      </h1>
-      <p className="mb-8 max-w-md font-SpaceGrotesk leading-[1.6] text-muted">
-        The page you are looking for has moved or never existed. Head back to
-        the homepage to explore the catalogue.
-      </p>
-      <Link
-        href="/"
-        className="rounded-md bg-brand-strong px-6 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-      >
-        Go to homepage
-      </Link>
-    </main>
+    <div className="flex min-h-screen flex-col bg-bg font-SpaceGrotesk text-ink antialiased">
+      <Header />
+      <main className="relative flex flex-grow flex-col items-center justify-center overflow-hidden px-5 py-32 text-center md:px-12">
+        {/* Signature glow, matching the homepage sections */}
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 opacity-60 blur-[120px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 38%, rgba(34,211,238,0.10), transparent 55%), radial-gradient(circle at 62% 62%, rgba(129,140,248,0.11), transparent 55%)",
+          }}
+        />
+        <p className="mb-4 font-JetBrainsMono text-[13px] uppercase tracking-[0.08em] text-cyan">
+          Error 404
+        </p>
+        <h1 className="mb-3 max-w-xl font-SpaceGrotesk !text-[clamp(2rem,1.4rem+2vw,3rem)] !font-bold !leading-[1.1] !tracking-[-0.03em] !text-ink">
+          This page rolled snake eyes.
+        </h1>
+        <p className="mb-8 max-w-md font-SpaceGrotesk text-[1.05rem] leading-[1.6] text-muted">
+          The page you&rsquo;re looking for has moved or never existed. Let&rsquo;s
+          get you back to the catalogue.
+        </p>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 rounded-md bg-brand-strong px-7 py-3 font-JetBrainsMono text-[13px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_22px_rgba(37,99,235,0.32)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        >
+          Back to homepage
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </main>
+      <Footer />
+    </div>
   );
 }

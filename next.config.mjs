@@ -29,6 +29,19 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    // Enforce the www canonical: 308 the apex host to www, preserving the path.
+    // Only matches the exact apex Host header, so it can't loop on www requests.
+    // (Belt-and-suspenders — your DNS/CDN may already do this.)
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "bet4.win" }],
+        destination: "https://www.bet4.win/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
