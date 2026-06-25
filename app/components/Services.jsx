@@ -1,24 +1,29 @@
 import React from "react";
 import Image from "next/image";
+// Static imports → content-hashed, immutably-cacheable asset URLs.
+import serverIcon from "@/public/assets/img/icons/gaming/server.png";
+import fairIcon from "@/public/assets/img/icons/gaming/fair.png";
+import originalsIcon from "@/public/assets/img/icons/gaming/originals.png";
+import retentionIcon from "@/public/assets/img/icons/gaming/retention.png";
 
 const items = [
   {
-    img: "/assets/img/icons/gaming/server.png",
+    img: serverIcon,
     title: "Remote Gaming Server (RGS)",
     body: "One battle-tested RGS to launch, manage and report on every game — built for massive concurrency, integrated once and white-labelled as your own.",
   },
   {
-    img: "/assets/img/icons/gaming/fair.png",
+    img: fairIcon,
     title: "Provably Fair RNG",
     body: "Certified random number generation. Every result is independently verifiable — trust by math, not by promise.",
   },
   {
-    img: "/assets/img/icons/gaming/originals.png",
+    img: originalsIcon,
     title: "Next-gen Originals",
     body: "A curated suite of fast-paced originals — crash, mines, plinko and more — with social, multiplayer and crypto-native mechanics on our provably-fair engine.",
   },
   {
-    img: "/assets/img/icons/gaming/retention.png",
+    img: retentionIcon,
     title: "Promos & Retention",
     body: "Tournaments, free bets, jackpots and leaderboards via API — the levers that lift player lifetime value.",
   },

@@ -24,7 +24,7 @@ function GameCard({ game, onLaunch }) {
           src={game.image}
           alt={game.title}
           fill
-          sizes="(min-width:992px) 16vw, (min-width:768px) 25vw, 33vw"
+          sizes="(min-width:1024px) 200px, (min-width:768px) 23vw, 45vw"
           className={`object-cover !rounded-b-[0] transition-transform duration-300 ${
             live ? "group-hover:scale-[1.04]" : "grayscale"
           }`}
@@ -35,6 +35,7 @@ function GameCard({ game, onLaunch }) {
               ? "border-line bg-bg/70 text-cyan"
               : "border-line bg-bg/70 text-muted"
           }`}
+          aria-hidden="true"
         >
           {live ? (
             <>
@@ -53,7 +54,10 @@ function GameCard({ game, onLaunch }) {
         <span className="font-SpaceGrotesk text-[0.95rem] font-semibold !text-ink">
           {game.title}
         </span>
-        <span className="font-JetBrainsMono text-[10px] uppercase tracking-[0.05em] text-muted">
+        <span
+          className="font-JetBrainsMono text-[10px] uppercase tracking-[0.05em] text-muted"
+          aria-hidden="true"
+        >
           {live ? "Play" : "Soon"}
         </span>
       </div>

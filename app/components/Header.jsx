@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
+import logo from "@/public/assets/img/b4w-logo.svg";
 
 // Absolute "/#section" so the nav works from any route (e.g. the 404 page),
 // not just the homepage — on "/" it's still a same-page scroll.
@@ -19,7 +20,7 @@ export default function Header() {
         <Link href="/" className="flex items-center" aria-label="Bet4.win home">
           {/* Real two-tone logo, recoloured to read on the dark canvas */}
           <img
-            src="/assets/img/b4w-logo.svg"
+            src={logo.src}
             alt="Bet4.win"
             width={143}
             height={28}

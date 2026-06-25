@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { trackEvent } from "@/app/lib/analytics";
+import logo from "@/public/assets/img/b4w-logo.svg";
 
 const links = [
   // { label: "Terms", href: "#" },
@@ -15,7 +16,7 @@ export default function Footer() {
     <footer className="border-t border-line/40 bg-panel-low">
       <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-between gap-6 px-5 py-12 md:flex-row md:px-12">
         <img
-          src="/assets/img/b4w-logo.svg"
+          src={logo.src}
           alt="Bet4.win"
           width={123}
           height={24}
