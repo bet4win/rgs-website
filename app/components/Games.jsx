@@ -117,15 +117,28 @@ export default function Games() {
   }, []);
 
   return (
-    <section id="games" ref={sectionRef} className="mx-auto max-w-[1280px] px-5 py-20 md:px-12">
+    <section
+      id="games"
+      ref={sectionRef}
+      aria-labelledby="games-heading"
+      className="mx-auto max-w-[1280px] px-5 py-20 md:px-12"
+    >
       <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="font-JetBrainsMono text-[12px] uppercase tracking-[0.08em] text-cyan">
             A new original every month
           </p>
-          <h2 className="mt-2 font-SpaceGrotesk !text-[1.6rem] !font-bold !tracking-[-0.02em] !text-ink">
+          <h2
+            id="games-heading"
+            className="mt-2 font-SpaceGrotesk !text-[1.6rem] !font-bold !tracking-[-0.02em] !text-ink"
+          >
             The catalogue
           </h2>
+          <p className="mt-2 max-w-xl font-SpaceGrotesk text-[0.9rem] leading-[1.55] text-muted">
+            Provably-fair originals you can launch as a casino game provider —
+            crash, mines, plinko, dice and more — each demo-playable below and
+            fully brandable for your platform.
+          </p>
         </div>
         <a
           href="#contact"

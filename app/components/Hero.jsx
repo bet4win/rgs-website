@@ -56,8 +56,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Game wall */}
-      <div className="relative w-full flex-1">
+      {/* Game wall — decorative collage; the real game tiles live in #games */}
+      <div className="relative w-full flex-1" aria-hidden="true">
         <div
           className="pointer-events-none absolute -inset-10 -z-10 rounded-full opacity-70 blur-3xl"
           style={{
@@ -75,9 +75,11 @@ export default function Hero() {
             >
               <Image
                 src={game.image}
-                alt={game.title}
+                alt=""
                 width={256}
                 height={256}
+                priority={i < 3}
+                sizes="(min-width:1024px) 200px, 30vw"
                 className="h-full w-full object-cover"
               />
             </div>

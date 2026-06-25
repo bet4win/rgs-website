@@ -4,8 +4,8 @@ import Image from "next/image";
 const items = [
   {
     img: "/assets/img/icons/gaming/server.png",
-    title: "Remote Gaming Server",
-    body: "One battle-tested platform to launch, manage and report on every game — built to handle massive concurrency without degradation.",
+    title: "Remote Gaming Server (RGS)",
+    body: "One battle-tested RGS to launch, manage and report on every game — built for massive concurrency, integrated once and white-labelled as your own.",
   },
   {
     img: "/assets/img/icons/gaming/fair.png",
@@ -15,7 +15,7 @@ const items = [
   {
     img: "/assets/img/icons/gaming/originals.png",
     title: "Next-gen Originals",
-    body: "A curated suite of fast-paced originals with social, multiplayer and crypto-native mechanics built on our fair engine.",
+    body: "A curated suite of fast-paced originals — crash, mines, plinko and more — with social, multiplayer and crypto-native mechanics on our provably-fair engine.",
   },
   {
     img: "/assets/img/icons/gaming/retention.png",
@@ -26,13 +26,20 @@ const items = [
 
 export default function Services() {
   return (
-    <section id="platform" className="mx-auto max-w-[1280px] px-5 py-20 md:px-12">
+    <section
+      id="platform"
+      aria-labelledby="platform-heading"
+      className="mx-auto max-w-[1280px] px-5 py-20 md:px-12"
+    >
       <div className="mb-10">
-        <h2 className="font-SpaceGrotesk !text-[1.6rem] !font-bold !tracking-[-0.02em] !text-ink">
+        <h2
+          id="platform-heading"
+          className="font-SpaceGrotesk !text-[1.6rem] !font-bold !tracking-[-0.02em] !text-ink"
+        >
           Engineered for scale
         </h2>
         <p className="mt-1 font-SpaceGrotesk text-muted">
-          The complete infrastructure for modern operators.
+          The complete infrastructure for modern iGaming operators.
         </p>
       </div>
 

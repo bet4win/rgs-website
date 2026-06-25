@@ -1,257 +1,82 @@
-"use client";
-import { useEffect, useRef } from "react";
+import "./globals.css";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
-import "../public/assets/style.css";
-import "photoswipe/dist/photoswipe.css";
-import iTooltip from "itooltip";
-import { usePathname } from "next/navigation";
-import scrollQue from "../utlis/scrollCue.min.js";
-import Context from "@/context/Context";
-import ProgressWrap from "@/components/common/ProgressWrap";
-import initPlayer from "@/utlis/initPlayer";
-import SearchModal from "@/components/modals/SearchModal";
-import InfoModal from "@/components/modals/InfoModal";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/app/lib/site";
+
+// Self-hosted at build time (no render-blocking Google Fonts <link>, no FOUT).
+// The CSS variables are wired into the Tailwind @theme tokens in globals.css so
+// the existing font-SpaceGrotesk / font-JetBrainsMono utilities resolve to them.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const TITLE = "Bet4.win — Provably-fair originals, built for operators";
+const GA_ID = "G-0GHLVCP489";
+
+export const metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: "%s — Bet4.win",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    locale: "en_US",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  category: "technology",
+};
+
+export const viewport = {
+  themeColor: "#0b1120",
+  colorScheme: "dark",
+};
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("bootstrap/dist/js/bootstrap.esm").then((module) => {
-        // Module is imported, you can access any exported functionality if
-      });
-    }
-  }, []);
-  // const rellaxRef = useRef(null);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      scrollQue().init();
-      window.dispatchEvent(new Event("scroll"));
-    }
-
-    return () => {
-      // rellaxRef.current?.destroy();
-    };
-  }, [pathname]);
-  useEffect(() => {
-    initPlayer();
-    const overlayElements = document.querySelectorAll(
-      ".overlay > a, .overlay > span"
-    );
-    overlayElements.forEach((element) => {
-      const overlayBg = document.createElement("span");
-      overlayBg.className = "bg";
-      element.appendChild(overlayBg);
-    });
-  }, [pathname]);
-  useEffect(() => {
-    const tooltipTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="tooltip"]'
-    );
-    const popoverTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="popover"]'
-    );
-
-    if (tooltipTriggerList.length > 0 || popoverTriggerList.length > 0) {
-      import("bootstrap/dist/js/bootstrap.bundle.min.js").then((bootstrap) => {
-        // Initialize tooltips
-        const tooltipList = Array.from(tooltipTriggerList).map(
-          (tooltipTriggerEl) => {
-            return new bootstrap.Tooltip(tooltipTriggerEl, {
-              trigger: "hover",
-            });
-          }
-        );
-
-        // Initialize popovers
-        const popoverList = Array.from(popoverTriggerList).map(
-          (popoverTriggerEl) => {
-            return new bootstrap.Popover(popoverTriggerEl);
-          }
-        );
-
-        // Cleanup tooltips and popovers on component unmount
-        return () => {
-          tooltipList.forEach((tooltip) => tooltip.dispose());
-          popoverList.forEach((popover) => popover.dispose());
-        };
-      });
-    }
-  }, [pathname]);
-
-  useEffect(() => {
-    const handleSticky = () => {
-      const navbar = document.querySelector(".navbar");
-      return false
-      if (navbar) {
-        if (window.scrollY > 120) {
-          navbar.classList.add("fixed");
-          navbar.classList.add("navbar-clone");
-          if (
-            navbar.classList.contains("transparent") &&
-            navbar.classList.contains("navbar-dark")
-          ) {
-            navbar.classList.remove("navbar-dark");
-            navbar.classList.add("navbar-light");
-            navbar.classList.add("navbar-dark-removed");
-          }
-        } else {
-          navbar.classList.remove("fixed");
-          navbar.classList.remove("navbar-clone");
-          if (
-            navbar.classList.contains("transparent") &&
-            navbar.classList.contains("navbar-dark-removed")
-          ) {
-            navbar.classList.add("navbar-dark");
-            navbar.classList.remove("navbar-light");
-            navbar.classList.remove("navbar-dark-removed");
-          }
-        }
-        if (window.scrollY > 300) {
-          navbar.classList.add("navbar-stick");
-        } else {
-          navbar.classList.remove("navbar-stick");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleSticky);
-  }, []);
-  useEffect(() => {
-    // Close any open modal
-    const bootstrap = require("bootstrap"); // dynamically import bootstrap
-    const modalElements = document.querySelectorAll(".modal.show");
-    modalElements.forEach((modal) => {
-      const modalInstance = bootstrap.Modal.getInstance(modal);
-      if (modalInstance) {
-        modalInstance.hide();
-      }
-    });
-
-    // Close any open offcanvas
-    const offcanvasElements = document.querySelectorAll(".offcanvas.show");
-    offcanvasElements.forEach((offcanvas) => {
-      const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
-      if (offcanvasInstance) {
-        offcanvasInstance.hide();
-      }
-    });
-    // Select all elements with the class 'offcanvas-backdrop'
-    const backdrops = document.querySelectorAll(".offcanvas-backdrop");
-
-    // Check if any backdrop elements exist and remove them
-    backdrops?.forEach((backdrop) => {
-      backdrop?.remove();
-    });
-  }, [pathname]); // Runs every time the route changes
-
-  useEffect(() => {
-    // Assuming iTooltip is globally available
-    var tooltip = new iTooltip(".itooltip");
-    tooltip.init({
-      className: "itooltip-inner",
-      indentX: 15,
-      indentY: 15,
-      positionX: "right",
-      positionY: "bottom",
-    });
-  }, [pathname]);
-  useEffect(() => {
-    setTimeout(() => {
-      import("bootstrap").then(({ Offcanvas }) => {
-        return;
-        const navbar = document.querySelector(".navbar");
-        if (!navbar) return;
-
-        const navOffCanvasBtn = document.querySelectorAll(".offcanvas-nav-btn");
-        const navOffCanvas = document.querySelector(
-          ".navbar:not(.navbar-clone) .offcanvas-nav"
-        );
-        if (!navOffCanvas) return;
-
-        const bsOffCanvas = new Offcanvas(navOffCanvas, { scroll: true });
-        const scrollLink = document.querySelectorAll(
-          ".onepage .navbar li a.scroll"
-        );
-        const searchOffcanvas = document.getElementById("offcanvas-search");
-
-        const handleNavClick = () => bsOffCanvas.show();
-        const handleScrollClick = () => bsOffCanvas.hide();
-
-        navOffCanvasBtn.forEach((e) =>
-          e.addEventListener("click", handleNavClick)
-        );
-        scrollLink.forEach((e) =>
-          e.addEventListener("click", handleScrollClick)
-        );
-
-        if (searchOffcanvas) {
-          searchOffcanvas.addEventListener("shown.bs.offcanvas", () => {
-            document.getElementById("search-form")?.focus();
-          });
-        }
-
-        return () => {
-          navOffCanvasBtn.forEach((e) =>
-            e.removeEventListener("click", handleNavClick)
-          );
-          scrollLink.forEach((e) =>
-            e.removeEventListener("click", handleScrollClick)
-          );
-        };
-      });
-    });
-  }, [pathname]);
   return (
-    <html lang="en">
-      <head>
+    <html
+      lang="en"
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="home-dark">
+        {children}
+
+        {/* GA4 — loads after the page is interactive so it never blocks paint */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-0GHLVCP489"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0GHLVCP489');
-          `}
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}');`}
         </Script>
-        {pathname === "/" ? (
-          // Homepage runs the dark studio theme on two typefaces, both from
-          // Google's CDN so the fonts are offloaded from our own server and
-          // shared-cached. (The template also self-hosts Space Grotesk; the
-          // Google @font-face below is declared last so it wins the cascade.)
-          <link
-            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-            rel="stylesheet"
-          />
-        ) : (
-          <>
-            <link
-              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:wght@400;500;700"
-              rel="stylesheet"
-            />
-            <link
-              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@1,300;1,400;1,500;1,600;1,700&display=swap"
-              rel="stylesheet"
-            />
-          </>
-        )}
-      </head>
-
-      <body className={pathname === "/" ? "home-dark" : undefined}>
-        <Context>
-          {children}
-          {/* Template extras pull in the Unicons icon font and a floating
-              scroll widget — not needed on the marketing homepage. */}
-          {pathname !== "/" && (
-            <>
-              <SearchModal />
-              <InfoModal />
-              <ProgressWrap />
-            </>
-          )}
-        </Context>
       </body>
     </html>
   );

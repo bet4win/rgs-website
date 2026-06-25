@@ -17,20 +17,27 @@ export default function Footer() {
         <img
           src="/assets/img/b4w-logo.svg"
           alt="Bet4.win"
+          width={123}
+          height={24}
           className="h-6 w-auto"
         />
-        <nav className="flex flex-wrap items-center justify-center gap-6">
-          {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href}
-              onClick={l.onClick}
-              className="font-JetBrainsMono text-[12px] uppercase tracking-[0.05em] !text-muted transition-colors hover:!text-ink focus-visible:outline-none focus-visible:!text-ink"
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
+        {links.length > 0 && (
+          <nav
+            aria-label="Footer"
+            className="flex flex-wrap items-center justify-center gap-6"
+          >
+            {links.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={l.onClick}
+                className="font-JetBrainsMono text-[12px] uppercase tracking-[0.05em] !text-muted transition-colors hover:!text-ink focus-visible:outline-none focus-visible:!text-ink"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+        )}
         <p className="font-SpaceGrotesk text-[13px] text-muted !mb-0">
           © {year} Bet4.win. All rights reserved.
         </p>

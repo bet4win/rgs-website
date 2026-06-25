@@ -19,6 +19,9 @@ export default function Header() {
           <img
             src="/assets/img/b4w-logo.svg"
             alt="Bet4.win"
+            width={143}
+            height={28}
+            fetchPriority="high"
             className="h-7 w-auto"
           />
         </Link>
