@@ -55,6 +55,10 @@ export const metadata = {
 export const viewport = {
   themeColor: "#0b1120",
   colorScheme: "dark",
+  // Extend the page under the iOS safe areas so a fullscreen game modal can
+  // cover the whole screen (incl. the home-indicator strip) instead of leaving
+  // the site visible behind it. Enables env(safe-area-inset-*).
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }) {

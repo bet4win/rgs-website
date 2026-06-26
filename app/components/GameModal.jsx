@@ -1,8 +1,10 @@
 "use client";
 import { useEffect } from "react";
 
-// Launches a game in a framed window: 16:9 centered on desktop, fullscreen on
-// mobile. `game` is null when closed.
+// Launches a game. On wide AND tall viewports (desktops/tablets) it's a
+// centered window whose iframe keeps the game's aspect ratio; on phones (either
+// orientation) it goes fullscreen, covering iOS safe areas. `game` is null when
+// closed.
 export default function GameModal({ game, onClose }) {
   useEffect(() => {
     if (!game) return;
@@ -22,18 +24,18 @@ export default function GameModal({ game, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-sm md:flex md:items-center md:justify-center md:p-6"
+      className="fixed inset-0 z-[9999] bg-black/85 backdrop-blur-sm win:flex win:items-center win:justify-center win:p-6"
       role="dialog"
       aria-modal="true"
       aria-label={`${game.title} demo`}
       onClick={onClose}
     >
       <div
-        className="game-modal-container absolute inset-0 flex flex-col overflow-hidden bg-panel-low shadow-2xl md:static md:inset-auto md:h-auto md:max-h-[90vh] md:rounded-xl md:border md:border-line"
+        className="game-modal-container absolute inset-0 flex flex-col overflow-hidden bg-panel-low shadow-2xl win:static win:inset-auto win:h-auto win:max-h-[90vh] win:rounded-xl win:border win:border-line"
         style={{ '--game-ratio': ratio }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex h-11 shrink-0 items-center justify-between border-b border-line bg-bg/80 px-4">
+        <div className="game-modal-header flex min-h-11 shrink-0 items-center justify-between border-b border-line bg-bg/80">
           <span className="font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] text-cyan">
             {game.title} · demo
           </span>
@@ -49,7 +51,7 @@ export default function GameModal({ game, onClose }) {
           </button>
         </div>
 
-        <div className="game-iframe-wrapper relative flex-1 md:flex-none">
+        <div className="game-iframe-wrapper relative flex-1 win:flex-none">
           <iframe
             key={game.id}
             src={game.url}
