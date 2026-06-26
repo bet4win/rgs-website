@@ -1,25 +1,54 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { socialLinks } from "@/data/socials";
+import { ArrowRight } from "./Icons";
+import logo from "@/public/assets/img/b4w-logo.svg";
 
-export default function Header({
-  parentClass = "relative wrapper !bg-[#fff8ee]",
-}) {
+// Absolute "/#section" so the nav works from any route (e.g. the 404 page),
+// not just the homepage — on "/" it's still a same-page scroll.
+const NAV = [
+  { label: "Platform", href: "/#platform" },
+  { label: "Games", href: "/#games" },
+  { label: "Provably Fair", href: "/#provably-fair" },
+  { label: "Branding", href: "/#branding" },
+  // { label: "Integration", href: "/#integration" },
+];
+
+export default function Header() {
   return (
-    <header className={parentClass}>
-      <nav className="navbar navbar-expand-lg center-nav transparent navbar-light">
-        <div className="container xl:!flex-row lg:!flex-row !flex-nowrap items-center">
-          <div className="navbar-brand w-full">
-            <Link href={`/`}>
-              {/* <span className="text-[#343f52] !text-[2.0rem]">Bet4.win</span> */}
-              <img src="/assets/img/b4w-logo.svg" className="h-auto w-40 mt-4" alt="Bet4.win Logo" />
-            </Link>
-          </div>
-        </div>
-        {/* /.container */}
-      </nav>
-      {/* /.navbar */}
+    <header className="fixed top-0 z-50 w-full border-b border-line/40 bg-bg/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 md:px-12">
+        <Link href="/" className="flex items-center" aria-label="Bet4.win home">
+          {/* Real two-tone logo, recoloured to read on the dark canvas */}
+          <img
+            src={logo.src}
+            alt="Bet4.win"
+            width={143}
+            height={28}
+            fetchPriority="high"
+            className="h-7 w-auto"
+          />
+        </Link>
+
+        <nav className="hidden items-center gap-9 md:flex">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="font-JetBrainsMono text-[12px] uppercase tracking-[0.06em] !text-muted transition-colors hover:!text-cyan focus-visible:!text-cyan focus-visible:outline-none"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <a
+          href="/#contact"
+          className="inline-flex items-center gap-1.5 rounded-md bg-brand-strong px-4 py-2 font-JetBrainsMono text-[12px] font-semibold uppercase tracking-[0.04em] !text-white shadow-[0_0_18px_rgba(37,99,235,0.3)] transition-colors hover:bg-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        >
+          Book a demo
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
     </header>
   );
 }
