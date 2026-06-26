@@ -8,12 +8,48 @@ import Theming from "@/app/components/Theming";
 import ClosingCta from "@/app/components/ClosingCta";
 import Footer from "@/app/components/Footer";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/app/lib/site";
+import { games } from "@/data/games";
 import React from "react";
 
-export const metadata = {
-  // Title/description/OpenGraph/Twitter inherit from the root layout defaults.
-  alternates: { canonical: "/" },
-};
+// Per-game share cards: when "/" is opened/shared with ?game=<slug> (set by the
+// Games modal), emit that game's title + 1200x630 art card for social unfurls.
+// Reading searchParams makes "/" server-rendered; canonical stays "/" so search
+// engines consolidate every ?game= variant onto the homepage (no duplicate URLs).
+export async function generateMetadata({ searchParams }) {
+  const sp = await searchParams;
+  const raw = Array.isArray(sp?.game) ? sp.game[0] : sp?.game;
+  const slug = (raw || "").toLowerCase();
+  const game = slug
+    ? games.find(
+        (g) =>
+          g.status === "active" &&
+          (g.id === slug || g.title.toLowerCase() === slug),
+      )
+    : null;
+
+  if (!game) {
+    // Defaults (title/description/OG) inherit from the root layout.
+    return { alternates: { canonical: "/" } };
+  }
+
+  const title = `Play ${game.title} · Provably-fair original — Bet4.win`;
+  const description = `Try the ${game.title} demo from Bet4.win — a certified, provably-fair original you can verify yourself and brand as your own.`;
+  const image = `/og/${game.title.toLowerCase()}.jpg`;
+
+  return {
+    title: { absolute: title },
+    description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      url: "/",
+      title,
+      description,
+      images: [{ url: image, width: 1200, height: 630, alt: `${game.title} — Bet4.win` }],
+    },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
+  };
+}
 
 // schema.org entity graph: who we are (Organization), the site (WebSite), and
 // the product (SoftwareApplication = the RGS). @id-linked so search engines

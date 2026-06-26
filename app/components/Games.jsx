@@ -8,6 +8,14 @@ import { trackEvent } from "@/app/lib/analytics";
 
 const isLive = (game) => game.status === "active";
 
+// Shareable URL slug for a game (matches the ?game= param + the OG card name).
+const slugFor = (game) => game.title.toLowerCase();
+const findBySlug = (slug) => {
+  if (!slug) return null;
+  const s = slug.toLowerCase();
+  return games.find((g) => isLive(g) && (g.id === s || slugFor(g) === s)) || null;
+};
+
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 function GameCard({ game, onLaunch }) {
@@ -84,18 +92,50 @@ function GameCard({ game, onLaunch }) {
 export default function Games() {
   const [active, setActive] = useState(null);
   const sectionRef = useRef(null);
+  // Tracks whether the currently-open modal added its own history entry (a tile
+  // click), vs. having been opened by a shared/deep link (the param was already
+  // in the URL on load). Determines how we tidy up on close.
+  const pushedRef = useRef(false);
 
+  // Open a game: reflect it in the URL so it can be shared, and add a history
+  // entry so the browser Back button closes the modal.
+  const openGame = (game) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("game", slugFor(game));
+    window.history.pushState(null, "", `?${params}`);
+    pushedRef.current = true;
+    setActive(game);
+  };
+
+  const closeGame = () => {
+    if (pushedRef.current) {
+      pushedRef.current = false;
+      window.history.back(); // pops our entry → popstate handler clears `active`
+      return;
+    }
+    // Opened via a shared/deep link: strip the param in place so closing never
+    // navigates the visitor off the site.
+    const params = new URLSearchParams(window.location.search);
+    params.delete("game");
+    const qs = params.toString();
+    window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
+    setActive(null);
+  };
+
+  // Keep the modal in sync with Back/Forward navigation.
+  useEffect(() => {
+    const onPop = () => {
+      pushedRef.current = false;
+      setActive(findBySlug(new URLSearchParams(window.location.search).get("game")));
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  // Initial deep link: open (and scroll to) the shared game on first load.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const gameParam = params.get("game");
-    if (!gameParam) return;
-
-    const match = games.find(
-      (g) =>
-        isLive(g) &&
-        (g.id === gameParam ||
-          g.title.toLowerCase() === gameParam.toLowerCase())
-    );
+    const match = findBySlug(params.get("game"));
     if (!match) return;
 
     const utmParams = Object.fromEntries(
@@ -156,11 +196,11 @@ export default function Games() {
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
         {games.map((game) => (
-          <GameCard key={game.id} game={game} onLaunch={setActive} />
+          <GameCard key={game.id} game={game} onLaunch={openGame} />
         ))}
       </div>
 
-      <GameModal game={active} onClose={() => setActive(null)} />
+      <GameModal game={active} onClose={closeGame} />
     </section>
   );
 }
