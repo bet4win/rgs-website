@@ -28,8 +28,14 @@ export async function generateMetadata({ searchParams }) {
     : null;
 
   if (!game) {
-    // Defaults (title/description/OG) inherit from the root layout.
-    return { alternates: { canonical: "/" } };
+    // Set the core tags explicitly rather than relying on layout→page metadata
+    // inheritance — this route is dynamic, and we want the meta description
+    // guaranteed in the page's own resolved metadata on every render.
+    return {
+      title: { absolute: "Bet4.win — Provably-fair originals, built for operators" },
+      description: SITE_DESCRIPTION,
+      alternates: { canonical: "/" },
+    };
   }
 
   const title = `Play ${game.title} · Provably-fair original — Bet4.win`;
